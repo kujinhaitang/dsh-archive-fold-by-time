@@ -1,0 +1,55 @@
+{
+  "name": "dsh-archive-manager",
+  "version": "1.3.0",
+  "description": "DSH 归档会话管理器：把已归档会话集中到侧栏「归档会话」面板，可按周/月/年分组折叠，支持一键恢复与彻底删除。Archive-session manager for DeepSeek Harness with week/month/year grouping, restore and permanent delete.",
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "cordis",
+    "archive",
+    "session",
+    "归档会话"
+  ],
+  "license": "MIT",
+  "type": "module",
+  "main": "./lib/index.js",
+  "files": [
+    "lib",
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE",
+    "test"
+  ],
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "engines": {
+    "node": ">=22",
+    "dsh": ">=0.2.0-rc.1"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": []
+    }
+  },
+  "scripts": {
+    "test": "node test/smoke.mjs",
+    "check": "node --check lib/index.js && node --check lib/client.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kujinhaitang/dsh-archive-manager.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kujinhaitang/dsh-archive-manager/issues"
+  },
+  "homepage": "https://github.com/kujinhaitang/dsh-archive-manager#readme"
+}
