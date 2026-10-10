@@ -25,6 +25,8 @@
 
 ### 方式一：从 tarball 安装（推荐分享用）
 
+**直接下载**：在 [Releases](https://github.com/kujinhaitang/dsh-archive-manager/releases/latest) 页面取 `dsh-archive-manager-1.3.0.tgz`；也可以在本仓库目录自行打包：
+
 ```bash
 npm pack                     # 产出 dsh-archive-manager-<version>.tgz
 ```
