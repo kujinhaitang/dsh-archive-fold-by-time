@@ -1,7 +1,7 @@
 {
-  "name": "dsh-archive-manager",
+  "name": "@kujinhaitang/dsh-archive-fold-by-time",
   "version": "1.3.0",
-  "description": "DSH 归档会话管理器：把已归档会话集中到侧栏「归档会话」面板，可按周/月/年分组折叠，支持一键恢复与彻底删除。Archive-session manager for DeepSeek Harness with week/month/year grouping, restore and permanent delete.",
+  "description": "DSH 归档会话管理器：把已归档会话集中到侧栏面板，按周 / 月 / 年时间轴分组折叠，支持一键恢复与彻底删除。Archive-session manager for DeepSeek Harness that folds archived sessions by week, month or year, with one-click restore and permanent delete.",
   "keywords": [
     "dsh",
     "dsh-plugin",
@@ -46,10 +46,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/kujinhaitang/dsh-archive-manager.git"
+    "url": "https://github.com/kujinhaitang/dsh-archive-fold-by-time.git"
   },
   "bugs": {
-    "url": "https://github.com/kujinhaitang/dsh-archive-manager/issues"
+    "url": "https://github.com/kujinhaitang/dsh-archive-fold-by-time/issues"
   },
-  "homepage": "https://github.com/kujinhaitang/dsh-archive-manager#readme"
+  "homepage": "https://github.com/kujinhaitang/dsh-archive-fold-by-time#readme"
 }

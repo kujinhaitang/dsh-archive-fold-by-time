@@ -29,7 +29,7 @@ function call(method, url, body) {
   });
 }
 
-const list = await call('GET', '/dsh-archive-manager/list');
+const list = await call('GET', '/dsh-archive-fold-by-time/list');
 console.log('GET  /list →', list.status, '| total =', list.body.total, '| home =', list.body.home);
 if (list.status !== 200 || !Array.isArray(list.body.items)) throw new Error('列表返回形状不正确');
 if (list.body.items.some((i) => !/^session-/.test(i.sessionId))) throw new Error('列表含非法会话 id');
@@ -37,15 +37,15 @@ for (const it of list.body.items.slice(0, 5)) {
   console.log(`  · ${it.sessionId} | ${it.title || '(无标题)'} | ${it.workspace?.title || '?'} | onDisk=${it.onDisk} | ${it.updatedAt ? new Date(it.updatedAt).toISOString() : '—'}`);
 }
 
-const traversal = await call('POST', '/dsh-archive-manager/delete', { sessionId: '../../etc/passwd' });
+const traversal = await call('POST', '/dsh-archive-fold-by-time/delete', { sessionId: '../../etc/passwd' });
 console.log('POST /delete (路径穿越) →', traversal.status, traversal.body.error);
 if (traversal.status !== 400) throw new Error('路径穿越未被拒绝');
 
-const missing = await call('POST', '/dsh-archive-manager/delete', { sessionId: 'session-00000000-0000-0000-0000-000000000000' });
+const missing = await call('POST', '/dsh-archive-fold-by-time/delete', { sessionId: 'session-00000000-0000-0000-0000-000000000000' });
 console.log('POST /delete (非归档) →', missing.status, missing.body.error);
 if (missing.status !== 409) throw new Error('非归档会话未被拒绝');
 
-const unknown = await call('GET', '/dsh-archive-manager/nope');
+const unknown = await call('GET', '/dsh-archive-fold-by-time/nope');
 console.log('GET  /nope →', unknown.status, unknown.body.error);
 if (unknown.status !== 404) throw new Error('未知接口未被拒绝');
 

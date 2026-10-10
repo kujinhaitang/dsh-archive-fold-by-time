@@ -1,4 +1,4 @@
-# dsh-archive-manager · 归档会话管理器
+# dsh-archive-fold-by-time · 按时间折叠的归档会话管理器
 
 把 DSH 中零散的**已归档会话**集中到一个面板里统一管理：查看、**恢复**、**彻底删除**，并按 **周 / 月 / 年**分组折叠。
 
@@ -25,16 +25,16 @@
 
 ### 方式一：从 tarball 安装（推荐分享用）
 
-**直接下载**：在 [Releases](https://github.com/kujinhaitang/dsh-archive-manager/releases/latest) 页面取 `dsh-archive-manager-1.3.0.tgz`；也可以在本仓库目录自行打包：
+**直接下载**：在 [Releases](https://github.com/kujinhaitang/dsh-archive-fold-by-time/releases/latest) 页面取 `dsh-archive-fold-by-time-1.3.0.tgz`；也可以在本仓库目录自行打包：
 
 ```bash
-npm pack                     # 产出 dsh-archive-manager-<version>.tgz
+npm pack                     # 产出 dsh-archive-fold-by-time-<version>.tgz
 ```
 
 把 tarball 交给对方后，在 DSH 里安装（等价于在 profile 的 `dependencies` 写入 `file:` 依赖）：
 
 ```
-plugin_manager install_bundle  target = file:<绝对路径>/dsh-archive-manager-1.3.0.tgz
+plugin_manager install_bundle  target = file:<绝对路径>/dsh-archive-fold-by-time-1.3.0.tgz
 ```
 
 同一 profile 的既有先例：`dsh-our-free-model` 就是用 `file:.../*.tgz` 安装的。
@@ -44,18 +44,18 @@ plugin_manager install_bundle  target = file:<绝对路径>/dsh-archive-manager-
 ```bash
 npm publish                  # 需要先改成你自己的 name / repository
 # 之后：
-plugin_manager install_bundle  target = dsh-archive-manager
+plugin_manager install_bundle  target = @kujinhaitang/dsh-archive-fold-by-time
 ```
 
 ### 方式三：从源码目录安装（开发用）
 
 1. 让包管理器能看到本目录：
    ```
-   <profile>/node_modules/dsh-archive-manager  →  <本仓库目录>
+   <profile>/node_modules/@kujinhaitang/dsh-archive-fold-by-time  →  <本仓库目录>
    ```
 2. `<profile>/package.json`：
-   - `dependencies` 增加 `"dsh-archive-manager": "file:<本仓库目录>"`
-   - `dsh.profile.bundles` 增加 `"dsh-archive-manager"`
+   - `dependencies` 增加 `"@kujinhaitang/dsh-archive-fold-by-time": "file:<本仓库目录>"`
+   - `dsh.profile.bundles` 增加 `"@kujinhaitang/dsh-archive-fold-by-time"`
 3. 重启 DSH。
 
 ## 在插件管理中可视、可开关
@@ -63,9 +63,9 @@ plugin_manager install_bundle  target = dsh-archive-manager
 装好后本插件就是一个受管 bundle，会出现在 DSH 的**插件管理**里（数据与 `plugin_manager list_bundles` 同源）：
 
 ```json
-{ "name": "dsh-archive-manager", "version": "1.3.0",
+{ "name": "@kujinhaitang/dsh-archive-fold-by-time", "version": "1.3.0",
   "enabled": true, "installed": true, "removable": true,
-  "rows": [{ "rowId": "dsh-archive-manager", "entryId": "include:dsh-archive-manager" }] }
+  "rows": [{ "rowId": "dsh-archive-fold-by-time", "entryId": "include:dsh-archive-fold-by-time" }] }
 ```
 
 - **可开关**：`enabled` 由插件管理页的开关控制；关闭时其插槽注册整体卸载，侧栏图标与面板一起消失。
@@ -76,8 +76,8 @@ plugin_manager install_bundle  target = dsh-archive-manager
 
 ```
 package.json          声明 dsh.bundle.patch 与 dsh.client
-cordis.patch.yml      loader 装载条目（insert id=dsh-archive-manager）
-lib/index.js          Host 半边：/dsh-archive-manager 路由
+cordis.patch.yml      loader 装载条目（insert id=dsh-archive-fold-by-time）
+lib/index.js          Host 半边：/dsh-archive-fold-by-time 路由
 lib/client.js         Client 半边：侧栏图标 + 中央面板（lazy-CJS）
 test/smoke.mjs        离线冒烟测试（只读，不写入任何数据）
 LICENSE               MIT
@@ -87,9 +87,9 @@ LICENSE               MIT
 
 | 方法 | 路径 | 说明 |
 | --- | --- | --- |
-| `GET` | `/dsh-archive-manager/list` | 返回 `{ items, total, home, store }` |
-| `POST` | `/dsh-archive-manager/restore` | body `{ sessionId }` 或 `{ all: true }` |
-| `POST` | `/dsh-archive-manager/delete` | body `{ sessionId }` 或 `{ all: true }` |
+| `GET` | `/dsh-archive-fold-by-time/list` | 返回 `{ items, total, home, store }` |
+| `POST` | `/dsh-archive-fold-by-time/restore` | body `{ sessionId }` 或 `{ all: true }` |
+| `POST` | `/dsh-archive-fold-by-time/delete` | body `{ sessionId }` 或 `{ all: true }` |
 
 ## 数据与安全
 
