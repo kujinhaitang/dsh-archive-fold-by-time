@@ -25,16 +25,16 @@
 
 ### 方式一：从 tarball 安装（推荐分享用）
 
-**直接下载**：在 [Releases](https://github.com/kujinhaitang/dsh-archive-fold-by-time/releases/latest) 页面取 `dsh-archive-fold-by-time-1.3.0.tgz`；也可以在本仓库目录自行打包：
+**直接下载**：在 [Releases](https://github.com/kujinhaitang/dsh-archive-fold-by-time/releases/latest) 页面取 `kujinhaitang-dsh-archive-fold-by-time-1.3.0.tgz`；也可以在本仓库目录自行打包：
 
 ```bash
-npm pack                     # 产出 dsh-archive-fold-by-time-<version>.tgz
+npm pack                     # 产出 kujinhaitang-dsh-archive-fold-by-time-<version>.tgz
 ```
 
 把 tarball 交给对方后，在 DSH 里安装（等价于在 profile 的 `dependencies` 写入 `file:` 依赖）：
 
 ```
-plugin_manager install_bundle  target = file:<绝对路径>/dsh-archive-fold-by-time-1.3.0.tgz
+plugin_manager install_bundle  target = file:<绝对路径>/kujinhaitang-dsh-archive-fold-by-time-1.3.0.tgz
 ```
 
 同一 profile 的既有先例：`dsh-our-free-model` 就是用 `file:.../*.tgz` 安装的。
