@@ -101,6 +101,18 @@ test/smoke.mjs        离线冒烟测试（只读，不写入任何数据）
 LICENSE               MIT
 ```
 
+> ⚠️ **`lib/client.js` 里 `window.__ModuleLoader__.load({ id })` 的 `id` 必须是 npm 包名**
+> （`@kujinhaitang/dsh-archive-fold-by-time`），**不能写成插件短名**。宿主下发的客户端模块表
+> 以包名做 row id（`@deepseek-ai/dsh-client-modules` 的 `reconcilePackage()` →
+> `graphRow(packageName, …)`），客户端加载器也按该 row id 判断这个包的 factory 是否就绪。
+> 写成短名时，加载器判定「本包加载完却没有注册」，于是反复重新拉取同一段脚本；脚本第二次
+> 执行会在同一个短名上重复注册，抛出
+> `client-modules: duplicate factory registration for "…" (bundle executed twice without invalidate?)`，
+> 该 entry 永不激活 → `web boot: 1 entry did not activate` → 整个界面起不来。
+> 注意区分三个同名概念：**模块注册 id = 包名**；**loader 装载条目 id**（`cordis.patch.yml` 里的
+> `dsh-archive-fold-by-time`，社区惯例用短名，profile 层可按它覆盖 config）；**插槽 id**
+> （`sidebar.panellist` / `main` 用的 `PANEL_ID`）与 **HTTP 路由前缀** `/dsh-archive-fold-by-time`。
+
 ## 宿主接口
 
 | 方法 | 路径 | 说明 |
