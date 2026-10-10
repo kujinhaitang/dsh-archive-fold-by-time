@@ -1,4 +1,4 @@
 - insert:
     - id: dsh-archive-fold-by-time
-      name: dsh-archive-fold-by-time
+      name: '@kujinhaitang/dsh-archive-fold-by-time'
       config: {}

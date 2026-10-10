@@ -43,7 +43,7 @@ DSH 自身的归档能力是「把会话收起来」——设置里可以切换�
 
 ### 方式一：从 tarball 安装（推荐分享用）
 
-**直接下载**：在 [Releases](https://github.com/kujinhaitang/dsh-archive-fold-by-time/releases/latest) 页面取 `kujinhaitang-dsh-archive-fold-by-time-1.3.0.tgz`；也可以在本仓库目录自行打包：
+**直接下载**：在 [Releases](https://github.com/kujinhaitang/dsh-archive-fold-by-time/releases/latest) 页面取 `kujinhaitang-dsh-archive-fold-by-time-1.3.1.tgz`；也可以在本仓库目录自行打包：
 
 ```bash
 npm pack                     # 产出 kujinhaitang-dsh-archive-fold-by-time-<version>.tgz
@@ -52,7 +52,7 @@ npm pack                     # 产出 kujinhaitang-dsh-archive-fold-by-time-<ver
 把 tarball 交给对方后，在 DSH 里安装（等价于在 profile 的 `dependencies` 写入 `file:` 依赖）：
 
 ```
-plugin_manager install_bundle  target = file:<绝对路径>/kujinhaitang-dsh-archive-fold-by-time-1.3.0.tgz
+plugin_manager install_bundle  target = file:<绝对路径>/kujinhaitang-dsh-archive-fold-by-time-1.3.1.tgz
 ```
 
 同一 profile 的既有先例：`dsh-our-free-model` 就是用 `file:.../*.tgz` 安装的。
@@ -81,7 +81,7 @@ plugin_manager install_bundle  target = @kujinhaitang/dsh-archive-fold-by-time
 装好后本插件就是一个受管 bundle，会出现在 DSH 的**插件管理**里（数据与 `plugin_manager list_bundles` 同源）：
 
 ```json
-{ "name": "@kujinhaitang/dsh-archive-fold-by-time", "version": "1.3.0",
+{ "name": "@kujinhaitang/dsh-archive-fold-by-time", "version": "1.3.1",
   "enabled": true, "installed": true, "removable": true,
   "rows": [{ "rowId": "dsh-archive-fold-by-time", "entryId": "include:dsh-archive-fold-by-time" }] }
 ```

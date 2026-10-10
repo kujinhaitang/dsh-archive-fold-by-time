@@ -1,6 +1,6 @@
 {
   "name": "@kujinhaitang/dsh-archive-fold-by-time",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "description": "DSH 归档会话管理器：把已归档会话集中到侧栏面板，按周 / 月 / 年时间轴分组折叠，支持一键恢复与彻底删除。Archive-session manager for DeepSeek Harness that folds archived sessions by week, month or year, with one-click restore and permanent delete.",
   "keywords": [
     "dsh",
